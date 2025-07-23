@@ -20,7 +20,7 @@ async function ProductDetailPage({
         name: "Camisa",
         description: "Camisa Branca",
         price: 100,
-        image_url: "https://source.unsplash.com/random?product",
+        image_url: "https://media.istockphoto.com/id/2065673896/pt/foto/rolling-dice-macro.jpg?s=2048x2048&w=is&k=20&c=RiWITez97Xo3L7YjGpGBmY0Dom7dR07Mwe7bXnW3LcU=",
         category_id: "1"
     }
 
