@@ -3,8 +3,10 @@ import type { NextRequest } from "next/server";
 import { AuthService } from "./services/auth.service";
 
 export async function middleware(request: NextRequest) {
+  console.log("caiu aqui");
   const authService = new AuthService();
   const user = authService.getUser();
+  console.log(user);
   if (authService.isTokenExpired() || !user) {
     const { pathname } = new URL(request.url);
 

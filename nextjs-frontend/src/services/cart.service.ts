@@ -1,4 +1,5 @@
 import { cookies } from "next/headers";
+import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
 import { ProductService } from "./product.service";
 
 export type CartItem = {
@@ -13,7 +14,7 @@ export type Cart = {
 };
 
 export class CartService {
-  private cookieStore: any;
+  cookieStore: ReadonlyRequestCookies;
 
   constructor(private productService: ProductService) {
     this.cookieStore = cookies();
