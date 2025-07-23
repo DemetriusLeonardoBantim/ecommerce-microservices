@@ -6,6 +6,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Product } from './products/entities/product.entity';
 import { OrdersModule } from './orders/orders.module';
 import { Order } from './orders/entities/order.entity';
+import { AuthModule } from './auth/auth.module';
+import { OrderItem } from './orders/entities/order-item.entity';
 
 @Module({
   imports: [
@@ -17,11 +19,13 @@ import { Order } from './orders/entities/order.entity';
       username: 'root',
       password: 'root',
       database: 'nest',
-      entities: [Product, Order],
+      entities: [Product, Order, OrderItem],
       synchronize: true,
       logging: true,
     }),
+    ProductsModule,
     OrdersModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
