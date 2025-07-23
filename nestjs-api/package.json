@@ -21,6 +21,7 @@
     "fixture": "ts-node ./src/fixture.ts"
   },
   "dependencies": {
+    "@golevelup/nestjs-rabbitmq": "^4.1.0",
     "@nestjs/common": "^11.0.1",
     "@nestjs/core": "^11.0.1",
     "@nestjs/jwt": "^11.0.0",

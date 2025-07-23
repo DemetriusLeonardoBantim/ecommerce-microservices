@@ -4,14 +4,14 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Order } from './entities/order.entity';
 import { In, Repository } from 'typeorm';
 import { Product } from '../products/entities/product.entity';
-// import { AmqpConnection } from '@golevelup/nestjs-rabbitmq';
+import { AmqpConnection } from '@golevelup/nestjs-rabbitmq';
 
 @Injectable()
 export class OrdersService {
   constructor(
     @InjectRepository(Order) private orderRepo: Repository<Order>,
     @InjectRepository(Product) private productRepo: Repository<Product>,
-    // private amqpConnection: AmqpConnection,
+    private amqpConnection: AmqpConnection,
   ) {}
 
   async create(createOrderDto: CreateOrderDto & { client_id: number }) {
@@ -46,11 +46,11 @@ export class OrdersService {
       }),
     });
     await this.orderRepo.save(order);
-    /* await this.amqpConnection.publish('amq.direct', 'OrderCreated', {
+    await this.amqpConnection.publish('amq.direct', 'OrderCreated', {
       order_id: order.id,
       card_hash: createOrderDto.card_hash,
       total: order.total,
-    }); */
+    });
     //publish diretamente numa fila
     return order;
   }
