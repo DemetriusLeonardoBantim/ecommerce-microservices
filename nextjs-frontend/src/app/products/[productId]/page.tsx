@@ -4,8 +4,7 @@ import { ProductQuantityForm } from "./ProductQuantityForm";
 import DescriptionIcon from "@mui/icons-material/Description";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import Image from "next/legacy/image";
-// import { ProductService } from "../../../services/product.service";
-import { Product } from "@/models";
+import { ProductService } from "../../../services/product.service";
 
 async function ProductDetailPage({
   params
@@ -13,16 +12,7 @@ async function ProductDetailPage({
   params: { productId: string };
 }) {
 
-  // const product = await new ProductService().getProduct(params.productId);
-
-    const product: Product = {
-        id: '1',
-        name: "Camisa",
-        description: "Camisa Branca",
-        price: 100,
-        image_url: "https://media.istockphoto.com/id/2065673896/pt/foto/rolling-dice-macro.jpg?s=2048x2048&w=is&k=20&c=RiWITez97Xo3L7YjGpGBmY0Dom7dR07Mwe7bXnW3LcU=",
-        category_id: "1"
-    }
+  const product = await new ProductService().getProduct(params.productId);
 
   return (
     <Grid2 container spacing={2}>
@@ -72,7 +62,7 @@ async function ProductDetailPage({
         </Typography>
         <Card sx={{ mt: 1 }} raised={true}>
           <CardContent>
-              <ProductQuantityForm product={product} />
+            <ProductQuantityForm product={product} />
           </CardContent>
         </Card>
       </Grid2>
